@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  {{ style('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css') }}
+  {{ script('https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.1/clipboard.min.js') }}
+  @if(getEnv('RECAPTCHA_ENABLED') === 'true')
+    {{ script('https://www.google.com/recaptcha/api.js') }}
+  @endif
+  <style>
+    * {
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    #app {
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    .originalUrl {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 30vw;
+    }
+
+    .shortUrl {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 20vw;
+    }
+
+    .hit {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 10vw;
+    }
+  </style>
+  <title>{{ antl.formatMessage('messages.URLShortener') }}</title>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="row">
+      <h1><strong>{{ antl.formatMessage('messages.URLShortener') }}</strong></h1>
+      <form action="" method="post">
+        {{ csrfField() }}
+        <label for="url">{{ antl.formatMessage('messages.URL') }}</label>
+        <input name="url" class="u-full-width" type="url" placeholder="https://www.google.com" id="url" required>
+        @if(flashMessage('error'))
+          <h5>{{flashMessage('error')}}</h5>
+        @endif
+        <button type="submit" class="button-primary g-recaptcha"
+        @if(getEnv('RECAPTCHA_ENABLED') === 'true')
+          data-sitekey="{{ getEnv('RECAPTCHA_SITEKEY') }}" data-callback="submit"
+        @endif
+        >{{ antl.formatMessage('messages.Shorten!') }}</button>
+      </form>
+      @if(flashMessage('url'))
+        <h5><a href="{{flashMessage('url')}}">{{flashMessage('url')}}</a></h5>
+        <button class="button copy" data-clipboard-text="{{flashMessage('url')}}">
+          {{ antl.formatMessage('messages.Copy') }}
+        </button>
+        <hr>
+      @endif
+      @if(urlRows.length)
+        <h5><strong>{{ antl.formatMessage('messages.MyUrls') }}</strong></h5>
+        {{--  <button>{{ antl.formatMessage('messages.ClearHistory') }}</button>  --}}
+        <div>
+          <table class="u-full-width u-max-full-width">
+            <thead>
+              <tr>
+                <th>{{ antl.formatMessage('messages.OriginalUrl') }}</th>
+                <th>{{ antl.formatMessage('messages.ShortUrl') }}</th>
+                <th>{{ antl.formatMessage('messages.Hit') }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @each(urlRow in urlRows)
+                <tr>
+                  <td class="originalUrl"><a target="_blank" href="{{ urlRow.url }}">{{ urlRow.url }}</a></td>
+                  <td class="shortUrl"><a target="_blank" href="{{ getEnv('APP_URL') + route('redirect', { id62: base62(urlRow.id) }) }}">{{ getEnv('APP_URL') + route('redirect', { id62: base62(urlRow.id) }) }}</a></td>
+                  <td class="hit">{{ urlRow.hit }}</td>
+                </tr>
+              @endeach
+            </tbody>
+          </table>
+        </div>
+      @endif
+      <h5><strong>{{ antl.formatMessage('messages.WhatIsIt') }}</strong></h5>
+      <p>{{ antl.formatMessage('messages.WhatIsItAnswer') }}</p>
+      <h5><strong>{{ antl.formatMessage('messages.YouLogMe?') }}</strong></h5>
+      <p>{{ antl.formatMessage('messages.YouLogMe?Answer') }}</p>
+      @if(getEnv('CONTACT_EMAIL'))
+        <h5><strong>{{ antl.formatMessage('messages.Contact') }}</strong></h5>
+        <p><a href="mailto:{{ getEnv('CONTACT_EMAIL') }}?subject=The URL Shortener ({{ getEnv('APP_URL') }})">{{ getEnv('CONTACT_EMAIL') }}</a></p>
+      @endif      
+    </div>
+  </div>
+  <script>
+    var clipboard = new ClipboardJS('.copy')
+    clipboard.on('success', function(e) {
+      alert('{{ antl.formatMessage('messages.Copied!') }}')
+    })
+    @if(getEnv('RECAPTCHA_ENABLED') === 'true')
+      function submit() {
+        document.getElementsByTagName('form')[0].submit()
+      }
+    @endif
+  </script>
+</body>
+</html>

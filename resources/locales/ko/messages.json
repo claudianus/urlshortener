@@ -1,0 +1,19 @@
+{
+  "URLShortener": "URL 단축기",
+  "URL": "URL",
+  "Copy": "단축 URL 복사하기",
+  "Copied!": "복사됨!",
+  "Shorten!": "단축하기!",
+  "NotValidUrl": "유효한 URL이 아닙니다.",
+  "MyUrls": "내가 최근에 단축한 URL 목록",
+  "ClearHistory": "목록 지우기",
+  "OriginalUrl": "원본 URL",
+  "ShortUrl": "단축 URL",
+  "Hit": "클릭",
+  "WhatIsIt": "URL 단축기가 뭔가요?",
+  "WhatIsItAnswer": "URL 단축기는 긴 URL을 짧은 URL으로 만들어주는 웹 애플리케이션입니다.",
+  "YouLogMe?": "어떻게 내가 단축한 URL들을 알고있나요? 내 개인정보를 수집한건가요?",
+  "YouLogMe?Answer": "아닙니다. 사용자분이 단축한 URL들은 사용자분의 웹 브라우져에 저장됩니다 우리 서버엔 사용자분의 개인정보가 없습니다. 웹 브라우져의 쿠키를 삭제하면 기록도 지워집니다.",
+  "Contact": "연락처",
+  "UnknownError": "알수없는 오류"
+}
