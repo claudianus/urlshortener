@@ -23,7 +23,7 @@ $ vim .env
 ```
 
 Then install dependencies and setup database..
-*You don't need to install any database server software like mysql, mariadb because this app use sqlite*
+*You don't need to install any database server software like mysql, mariadb because this app use sqlite by default*
 
 ```bash
 $ npm install

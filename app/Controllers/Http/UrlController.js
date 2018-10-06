@@ -81,7 +81,7 @@ class UrlController {
     const url = await Url.find(base62.decode(params.id62))
     if(!url) {
       //없으면 홈으로
-      return response.route('home')
+      return response.status(404).send()
     }
     //있으면
 

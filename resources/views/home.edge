@@ -48,7 +48,6 @@
     <div class="row">
       <h1><strong>{{ antl.formatMessage('messages.URLShortener') }}</strong></h1>
       <form action="" method="post">
-        {{ csrfField() }}
         <label for="url">{{ antl.formatMessage('messages.URL') }}</label>
         <input name="url" class="u-full-width" type="url" placeholder="https://www.google.com" id="url" required>
         @if(flashMessage('error'))
