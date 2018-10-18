@@ -92,7 +92,9 @@ class UrlController {
 
     //original url 디코드후 인코드 (여러문제 해결해줌)
     const encoded = encodeURI(decodeURI(url.url))
+
     //oroginal url으로 리다이렉트
+    response.header('Cache-Control', 'public')
     return response.redirect(encoded)
   }
 }
