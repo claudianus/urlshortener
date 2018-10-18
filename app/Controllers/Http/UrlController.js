@@ -81,7 +81,7 @@ class UrlController {
     const url = await Url.find(base62.decode(params.id62))
     if(!url) {
       //없으면 홈으로
-      response.header('Cache-Control', 'no-store')
+      response.header('cache-control', 'no-store')
       return response.status(404).send()
     }
     //있으면
@@ -94,7 +94,7 @@ class UrlController {
     const encoded = encodeURI(decodeURI(url.url))
 
     //oroginal url으로 리다이렉트
-    response.header('Cache-Control', 'max-age=31556926')
+    response.header('cache-control', 'public, max-age=2592000, s-maxage=2592000')
     return response.redirect(encoded, false, 301)
   }
 }

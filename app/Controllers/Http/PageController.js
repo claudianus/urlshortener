@@ -22,7 +22,7 @@ class PageController {
       urlRows = await Url.query().whereIn('id', urlIds).orderBy('id', 'desc').limit(20)
     }
 
-    response.header('Cache-Control', 'no-store')
+    response.header('cache-control', 'no-store')
     return view.render('home', {urlRows})
   }
 }
