@@ -95,7 +95,7 @@ class UrlController {
 
     //oroginal url으로 리다이렉트
     response.header('cache-control', 'public, max-age=2592000, s-maxage=2592000')
-    return response.redirect(encoded, false, 301)
+    return response.redirect(encoded, false, 302)
   }
 }
 
