@@ -38,3 +38,13 @@ $ npm start
 ```
 
 That's it
+
+# Using [Cloudflare CDN (Free)](https://www.cloudflare.com/) to cache shortend urls
+
+## Create a page rule to let cloudflare cache dynamic contents
+<img src="https://s.put.re/JijhY29.PNG" alt="create a page rule" width="700px">
+
+## [Performance test](https://tools.keycdn.com/performance)
+<img src="https://s.put.re/7o7ZuRk.PNG" alt="benchmark result" width="700px">
+
+just amazing.
