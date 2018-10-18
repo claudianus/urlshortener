@@ -5,6 +5,7 @@
   "description": "The URL Shortener developed by claudianus@engineer.com",
   "main": "server.js",
   "scripts": {
+    "dev": "adonis serve --dev",
     "start": "node server.js",
     "test": "node ace test"
   },

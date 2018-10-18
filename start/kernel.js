@@ -13,7 +13,6 @@ const Server = use('Server')
 */
 const globalMiddleware = [
   'Adonis/Middleware/BodyParser',
-  'Adonis/Middleware/Session',
 ]
 
 /*
@@ -34,6 +33,7 @@ const globalMiddleware = [
 |
 */
 const namedMiddleware = {
+  session: 'Adonis/Middleware/Session'
 }
 
 /*

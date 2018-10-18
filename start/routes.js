@@ -15,6 +15,6 @@
 
 const Route = use('Route')
 
-Route.get('/',          'PageController.home').as('home')
-Route.post('/',         'UrlController.store').as('store')
+Route.get('/',          'PageController.home').middleware('session').as('home')
+Route.post('/',         'UrlController.store').middleware('session').as('store')
 Route.get('/:id62',     'UrlController.redirect').as('redirect')
