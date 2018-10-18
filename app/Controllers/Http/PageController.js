@@ -4,7 +4,7 @@ const Url = use('App/Models/Url')
 const base62 = require('base62/lib/ascii')
 
 class PageController {
-  async home({view, request}) {
+  async home({view, request, response}) {
     //url db rows 담을 변수
     let urlRows
 
