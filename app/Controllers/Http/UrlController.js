@@ -94,8 +94,8 @@ class UrlController {
     const encoded = encodeURI(decodeURI(url.url))
 
     //oroginal url으로 리다이렉트
-    response.header('Cache-Control', 'public, max-age=31556926')
-    return response.redirect(encoded)
+    response.header('Cache-Control', 'max-age=31556926')
+    return response.redirect(encoded, false, 301)
   }
 }
 
