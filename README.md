@@ -2,6 +2,7 @@
 This is a node.js fullstack web application that shorten long urls
 ## Screenshot
 <img src="https://s.put.re/YCAQDkq.PNG" width="800px">
+
 ## How to install and host on your server (Ubuntu 18.04)
 Install node.js if you haven't installed node.js yet
 ```bash
