@@ -60,7 +60,7 @@
         >{{ antl.formatMessage('messages.Shorten!') }}</button>
       </form>
       @if(flashMessage('url'))
-        <h5><a href="{{flashMessage('url')}}">{{flashMessage('url')}}</a></h5>
+        <h5><a target="_blank" href="{{flashMessage('url')}}">{{flashMessage('url')}}</a></h5>
         <button class="button copy" data-clipboard-text="{{flashMessage('url')}}">
           {{ antl.formatMessage('messages.Copy') }}
         </button>
