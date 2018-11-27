@@ -19,7 +19,7 @@ class PageController {
       //62진수 id들 10진수로 변환
       urlIds = urlIds.map((x) => base62.decode(x))
       //10진수id로 db에서 url row들 가져옴
-      urlRows = await Url.query().whereIn('id', urlIds).orderBy('id', 'desc').limit(20)
+      urlRows = await Url.query().whereIn('id', urlIds).orderBy('id', 'desc').limit(20).fetch()
     }
 
     response.header('cache-control', 'no-store')
