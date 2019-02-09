@@ -4,13 +4,17 @@ const Url = use('App/Models/Url')
 const base62 = require('base62/lib/ascii')
 
 class PageController {
-  async home({view, request, response}) {
+  async home({
+    view,
+    request,
+    response
+  }) {
     //url db rows 담을 변수
     let urlRows
 
     //클라이언트가 보낸 urls 쿠키 값 가져오기
     const cookie = request.plainCookie('urls')
-    if(cookie){
+    if (cookie) {
       //값이 있으면
       //파싱해서 배열로 만듬
       let urlIds = cookie.split('|')
@@ -23,7 +27,9 @@ class PageController {
     }
 
     response.header('cache-control', 'no-store')
-    return view.render('home', {urlRows})
+    return view.render('home', {
+      urlRows: urlRows.toJSON()
+    })
   }
 }
 
