@@ -14,7 +14,7 @@
     * {
       font-family: 'Raleway', sans-serif;
     }
-    
+
     #app {
       margin-top: 100px;
       margin-bottom: 100px;
@@ -97,7 +97,11 @@
       @if(getEnv('CONTACT_EMAIL'))
         <h5><strong>{{ antl.formatMessage('messages.Contact') }}</strong></h5>
         <p><a href="mailto:{{ getEnv('CONTACT_EMAIL') }}?subject=The URL Shortener ({{ getEnv('APP_URL') }})">{{ getEnv('CONTACT_EMAIL') }}</a></p>
-      @endif      
+      @endif
+      <h5><strong>{{ antl.formatMessage('messages.Partners') }}</strong></h5>
+      <ul>
+        <li><a href="http://www.artsdayo.com/">아츠다요!</a></li>
+      </ul>
     </div>
   </div>
   <script>
